@@ -2,9 +2,7 @@
   PhotoMotor
   When a photoresistor registers the passing of a ball, adjusts motor speed based on time.
  */
-#include <iostream>
-#include <cstudio>
-#include <ctime>
+
 const int photoStart = 2;    //Photoresistor at the beginning of the device
 const int photoBelt = 3;     //Photoresistor at the beginning of the belt
 const int photoBeltM = 4;    //Photoresistor at the midpoint of the belt
@@ -16,40 +14,33 @@ const double ball = 1;       //CHANGE VALUE OF BALL ON PHOTORESISTORS
 const double lengthStart = 3;//Total length of device
 const double lengthBelt = 2; //Length of the belt
 
+int start;
+int photoRead;
+int timeLeft;
+int beltSpeed;
+int beltVoltage;
+
 
 void setup() {
   pinMode(photoStart, INPUT);
   pinMode(photoBelt, INPUT);
   pinMode(photoBeltM, INPUT);
   pinMode(failSafe, INPUT);
-  pinMode(pwm, OUTPUT);
+//  pinMode(pwm, OUTPUT);
   pinMode(in_1, OUTPUT);
   pinMode(in_2, OUTPUT);
 }
 
-/*
 int main() {
-  std::clock_t start;
-  double duration;
-  start = std::clock();
-  
-  if(photoBelt < 1) {
-  
-  
-  duration = (std::clock()-start/(double)CLOCKS_PER_SEC;
-  
-  std::cout<<"printf: "<<duration <<'\n';
-*/
-void main() {
-  start = std::clock();
   if(photoBelt < ball) {
-    time = std::clock();
-    total = time - start;
-    remaining = 15000 - total;
-    physicsMath(lengthBelt, remaining);
+    photoRead = millis();
+    timeLeft = 15000 - photoRead;
+    physicsMath(lengthBelt, timeLeft);
   }
 }
 
-void physicsMath(double length, double time) {
-  
+void physicsMath(int length, int time) {
+  beltSpeed = length/time;
+  beltVoltage = 1; //PUT MATH HERE
+}
   
